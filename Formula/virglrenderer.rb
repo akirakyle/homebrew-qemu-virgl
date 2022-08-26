@@ -10,12 +10,11 @@ class Virglrenderer < Formula
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
   depends_on "akirakyle/qemu-virgl/libangle"
-  depends_on "akirakyle/qemu-virgl/libepoxy-angle"
 
   def install
     mkdir "build" do
-      system "meson", *std_meson_args, "-Dc_args=-I#{Formula["libepoxy-angle"].opt_prefix}/include",
-             "-Dc_link_args=-L#{Formula["libepoxy-angle"].opt_prefix}/lib", ".."
+      system "meson", *std_meson_args,
+             "-Dc_args=-I#{Formula["libangle"].opt_prefix}/include", ".."
       system "ninja", "-v"
       system "ninja", "install", "-v"
     end

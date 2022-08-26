@@ -25,15 +25,11 @@ class Libangle < Formula
         with_env(PATH: path) do
           Dir.chdir(buildpath)
 
-          system "python2", "scripts/bootstrap.py"
-          system "gclient", "sync"
-          if Hardware::CPU.arm?
-            system "gn", "gen", \
-              "--args=use_custom_libcxx=false target_cpu=\"arm64\" treat_warnings_as_errors=false", \
-              "./angle_build"
-          else
-            system "gn", "gen", "--args=use_custom_libcxx=false treat_warnings_as_errors=false", "./angle_build"
-          end
+          system "python3", "scripts/bootstrap.py"
+          system "gclient", "sync", "-D"
+          system "gn", "gen", \
+                 "--args=is_debug=false", \
+                 "./angle_build"
           system "ninja", "-C", "angle_build"
           lib.install "angle_build/libabsl.dylib"
           lib.install "angle_build/libEGL.dylib"
@@ -46,15 +42,6 @@ class Libangle < Formula
   end
 
   test do
-    # `test do` will create, run in and delete a temporary directory.
-    #
-    # This test will fail and we won't accept that! For Homebrew/homebrew-core
-    # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test libangle`. Options passed
-    # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
-    #
-    # The installed folder is not in the path, so use the entire path to any
-    # executables being tested: `system "#{bin}/program", "do", "something"`.
     system "true"
   end
 end

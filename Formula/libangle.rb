@@ -39,6 +39,7 @@ class Libangle < Formula
           File.open(".gclient", "w") { |file| file.puts content }
           system "gclient", "sync", "-j", ENV.make_jobs
 
+          #
           # This fixes relocation failing with HeaderPadError in
           # replace_command in macho_file.rb
           system "sed", "-i", "-e", "1182i\\

@@ -5,7 +5,6 @@ class QemuVirgl < Formula
   url "https://github.com/akihikodaki/qemu.git", using: :git, revision: "4d2563def3e26482c6b1ff8ab38c31eea8373890"
   version "20220226.1"
   license "GPL-2.0-only"
-  # A
 
   bottle do
     root_url "https://github.com/akirakyle/homebrew-qemu-virgl/releases/download/v1"

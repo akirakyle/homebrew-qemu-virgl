@@ -52,7 +52,8 @@ class LibepoxyAngle < Formula
           return 0;
       }
     EOS
-    system ENV.cc, "test.c", "-L#{lib}", "-lepoxy", "-framework", "OpenGL", "-o", "test"
+    system ENV.cc, "test.c", "-I#{include}", "-L#{lib}", "-lepoxy",
+           "-framework", "OpenGL", "-o", "test"
     system "ls", "-lh", "test"
     system "file", "test"
     system "./test"

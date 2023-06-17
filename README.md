@@ -1,3 +1,13 @@
+Update: I am no longer maintaining this homebrew formula and recomend UTM going forward.
+
+We're over two years from the original awesome work of @akihikodaki to get this all working.
+Unfortunately, we haven't yet seen all the patches upstreamed.
+@akihikodaki has moved on to Asahi Linux as the gpu support there has made awesome and rapid progress.
+Thus, I don't expect the forked repos of @akihikodaki to necessarily be kept up to date.
+The whole point of my original fork of this homebrew formula was to use the forked repo's of @akihikodaki rather than a set of patches and to update everything since @knazarov seemed to be unresponsive (https://github.com/knazarov/homebrew-qemu-virgl/issues/98).
+Given the complexities involved in building angle+virglrender+libepoxy+qemu and keeping these patches up to date on top of them, and that [UTM has integrated this work](https://github.com/utmapp/UTM/pull/2715) (and is actively maintaining the patches of @akihikodaki), I think it's best to recomend UTM going forward to run graphics acceleration for qemu on macos.
+Personally, I am no longer running graphical workloads in linux on macos so have no need for these formulas going forward.
+
 # 3D accelerated qemu on MacOS
 
 ![ubuntu](https://user-images.githubusercontent.com/6728841/111193747-90da1a00-85cb-11eb-9517-36c1a19c19be.gif)
